@@ -41,6 +41,7 @@ function setCurrentLink() {
   }
 }
 
+/*
 function initMap() {
   const popupContent = new google.maps.InfoWindow()
   const popupText = '<div class="popupText"><div id="title">Hodowla bydła</div><div id="subTitle">rasy <span>Limousine</span></div><div>Błotnica</div><div>Słoneczna 19</div></div>'
@@ -78,6 +79,7 @@ function initMap() {
   )
   marker.setMap(map)
 }
+*/
 
 function validateForm(){
   var errorFlag = false  
