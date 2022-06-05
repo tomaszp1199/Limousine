@@ -124,10 +124,7 @@ function emailIsValid(email){
 
 function sendEmail(){
   Email.send({
-    Host: "smtp.elasticemail.com",
-    Username: "tomaszp1199@gmail.com",
-    Password: "49A604317497E90B48BAEC9A8E6D1FBD7ECA",
-    //Password: "227D589B34574D7ADBA7E1B02DCE08C672B894AC5902828BB15DB47BCF048A101D7F23C2AB5280C470D273E314B1C3FE",
+    SecureToken : "53c2fd07-5b6f-454a-8d05-fcd7c21b679d",
     To: "tomaszp1199@gmail.com",
     From: email.value,
     Subject: `Limousine`,
