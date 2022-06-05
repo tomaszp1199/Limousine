@@ -1,0 +1,464 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Display:wght@200&family=EB+Garamond&family=Josefin+Slab&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 1.03em;
+  font-family: 'EB Garamond', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #170F11;
+  color: #FFEBC6;
+}
+
+.home {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: minmax(4%, 70%) auto 4%;
+      grid-template-columns: minmax(4%, 70%) auto 4%;
+  -ms-grid-rows: 24% auto;
+      grid-template-rows: 24% auto;
+}
+
+.home img {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+  position: relative;
+  z-index: -1;
+  max-width: 100%;
+  top: -10%;
+  -webkit-mask-image: radial-gradient(ellipse 70% 77% at 40% 14%, white 99.7%, transparent);
+          mask-image: radial-gradient(ellipse 70% 77% at 40% 14%, white 99.7%, transparent);
+}
+
+.home .headline {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  -ms-grid-column-align: left;
+      justify-self: left;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  color: #21191B;
+}
+
+.home .headline h1 {
+  font-size: 2.7em;
+}
+
+.home .headline h2 {
+  font-size: 1.8em;
+}
+
+.home .headline h2 span {
+  color: #8E4A49;
+}
+
+.stickable {
+  position: absolute;
+  top: 4%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+.logo {
+  width: 15%;
+  mix-blend-mode: overlay;
+  left: 4%;
+}
+
+.navbar {
+  right: 4%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  text-align: center;
+  font-size: 1.1em;
+  margin: 0.8em;
+  text-decoration: none;
+}
+
+.navbar a span {
+  position: static;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  opacity: 100%;
+}
+
+.navbar a svg {
+  position: fixed;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  opacity: 0%;
+  height: 40px;
+}
+
+.navbar a #icon1 {
+  right: 4.6%;
+}
+
+.navbar a #icon2 {
+  right: 9.2%;
+}
+
+.navbar a #icon3 {
+  right: 13.8%;
+}
+
+.navbar a #icon4 {
+  right: 18.4%;
+}
+
+.navbar a #icon5 {
+  right: 23%;
+}
+
+.navbar a:hover {
+  color: #D5A6F5;
+}
+
+.navbar .current-link {
+  color: #429156;
+}
+
+.sticky {
+  position: fixed;
+  top: 4%;
+  z-index: 1;
+}
+
+.logo.sticky {
+  width: 11%;
+  left: 4%;
+}
+
+.navbar.sticky {
+  right: 4%;
+}
+
+.navbar.sticky a svg {
+  position: static;
+  opacity: 100%;
+}
+
+.navbar.sticky a span {
+  position: fixed;
+  opacity: 0%;
+}
+
+section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 4% minmax(auto, 46%) minmax(auto, 46%) 4%;
+      grid-template-columns: 4% minmax(auto, 46%) minmax(auto, 46%) 4%;
+  margin-bottom: 4%;
+}
+
+section h3 {
+  font-size: 2.3em;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+section p {
+  padding-top: 5%;
+  font-size: 1.5em;
+  text-align: justify;
+}
+
+section img {
+  width: 80%;
+}
+
+.about h3 {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+}
+
+.about p {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+}
+
+.about img {
+  grid-column: 3 / -1;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / 3;
+  -ms-grid-column-align: right;
+      justify-self: right;
+}
+
+.bulls h3 {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+}
+
+.bulls p {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+}
+
+.bulls img {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / 3;
+  -ms-grid-column-align: left;
+      justify-self: left;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-mask: url(../image/bullMask.svg) 100% 100%/100% no-repeat;
+          mask: url(../image/bullMask.svg) 100% 100%/100% no-repeat;
+}
+
+.heifers h3 {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+}
+
+.heifers p {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+}
+
+.heifers img {
+  grid-column: 3 / -1;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / 3;
+  -ms-grid-column-align: right;
+      justify-self: right;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.contact {
+  -ms-grid-rows: 1.5fr 3fr 5fr 4%;
+      grid-template-rows: 1.5fr 3fr 5fr 4%;
+  color: #21191B;
+}
+
+.contact h3 {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2 / 4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.contact p {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  -ms-grid-column-align: left;
+      justify-self: left;
+  width: 90%;
+}
+
+.contact img {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: 100%;
+  position: relative;
+  z-index: -1;
+  max-width: 100%;
+}
+
+.contact form {
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3 / 4;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  -ms-grid-column-align: right;
+      justify-self: right;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 50px;
+  background: rgba(255, 235, 199, 0.7);
+  border-radius: 1%;
+  width: 90%;
+}
+
+.contact form label {
+  display: block;
+  margin: 20px 0;
+}
+
+.contact form input, .contact form textarea {
+  width: 100%;
+  padding: 10px;
+  background: none;
+  outline: none;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #8E4A49;
+}
+
+.contact form input[type="text"]:focus, .contact form textarea:focus {
+  border-bottom: 1px solid #429156;
+}
+
+.contact form textarea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.contact form textarea::-webkit-scrollbar-thumb {
+  background-color: #429156;
+}
+
+.contact form .center {
+  text-align: center;
+}
+
+.contact form input[type="submit"] {
+  margin-top: 30px;
+  width: 90%;
+  max-width: 250px;
+  background-color: #8E4A49;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.contact form .error {
+  color: red;
+}
+
+.contact form .error-border {
+  border-bottom: 1px solid red;
+}
+
+.contact form #success {
+  color: #429156;
+}
+
+.contact .map {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2 / 4;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
+  -ms-grid-column-align: stretch;
+      justify-self: stretch;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
+  opacity: 97%;
+  z-index: 1;
+}
+
+.popupText {
+  color: #21191B;
+  font-size: 1em;
+}
+
+.popupText #title {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.popupText #subTitle {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.popupText #subTitle span {
+  color: #8E4A49;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  #newsletter h1,
+  #newsletter form,
+  #boxes .box,
+  article#main-col,
+  aside#sidebar {
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
+  header {
+    padding-bottom: 20px;
+  }
+  #showcase h1 {
+    margin-top: 40px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.7em;
+}
+
+::-webkit-scrollbar-track {
+  background: #170F11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4e3c40;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #35272a;
+}
+
+footer {
+  background-color: #21191B;
+  text-align: center;
+}
+/*# sourceMappingURL=style.css.map */
