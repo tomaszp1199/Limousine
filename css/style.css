@@ -280,8 +280,8 @@ section img {
 }
 
 .contact {
-  -ms-grid-rows: 1.5fr 3fr 5fr 4%;
-      grid-template-rows: 1.5fr 3fr 5fr 4%;
+  -ms-grid-rows: 1.5fr 1fr 2fr 5fr 4%;
+      grid-template-rows: 1.5fr 1fr 2fr 5fr 4%;
   color: #21191B;
 }
 
@@ -318,13 +318,25 @@ section img {
   max-width: 100%;
 }
 
+.contact .contactInfo {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3 / 4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .contact form {
   -ms-grid-column: 3;
   -ms-grid-column-span: 1;
   grid-column: 3 / 4;
   -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
-  grid-row: 2 / 3;
+  -ms-grid-row-span: 2;
+  grid-row: 2 / 4;
   -ms-grid-column-align: right;
       justify-self: right;
   -ms-flex-item-align: start;
@@ -391,9 +403,9 @@ section img {
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
   grid-column: 2 / 4;
-  -ms-grid-row: 3;
+  -ms-grid-row: 4;
   -ms-grid-row-span: 1;
-  grid-row: 3 / 4;
+  grid-row: 4 / 5;
   -ms-grid-column-align: stretch;
       justify-self: stretch;
   -ms-flex-item-align: stretch;

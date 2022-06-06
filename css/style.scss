@@ -229,7 +229,7 @@ section {
 
 .contact {
 	//grid-template-rows: minmax($margin,20%) auto minmax(40%, 100vh) $margin;
-	grid-template-rows: 1.5fr 3fr 5fr $margin;
+	grid-template-rows: 1.5fr 1fr 2fr 5fr $margin;
 	color: color(bgLight);
 	
 	h3 {
@@ -254,9 +254,15 @@ section {
 		//mask: url(../image/bullMask.svg) 100% 100% / 100% no-repeat;		
 	}
 
+	.contactInfo {
+		grid-column: 2 / 3;
+		grid-row: 3 / 4;
+		display: flex;
+	}
+
 	form {
 		grid-column: 3 / 4;
-		grid-row: 2 / 3;
+		grid-row: 2 / 4;
 		justify-self: right;
 		align-self: flex-start;
 		padding: 50px;
@@ -320,7 +326,7 @@ section {
 
 	.map {
 		grid-column: 2 / 4;
-		grid-row: 3 / 4;
+		grid-row: 4 / 5;
 		justify-self: stretch;
 		align-self: stretch;
 		opacity: 97%;
