@@ -4,6 +4,10 @@
 	@return map-get($palette, $colorName);
 };
 
+@function fontSize($size){
+	@return map-get($fontSize, $size);
+};
+
 $palette: (
 	bgDark: #170F11,
 	bgLight: #21191B,
@@ -17,14 +21,32 @@ $palette: (
 	scrollDark: #35272a,
 );
 
-$margin: 4%;
-$stickyTransition: 0.4s;
+$fontSize: (
+	navbar: calc(max(0.85vw,10px)),
+  headline: calc(max(2.7vw,20px)),
+  title: calc(max(1.75vw,15px)),
+  paragraph: calc(max(1.37vw,10px)),
+);
+
+
+$margin: 5%;
+$navbarWidth: 40% - $margin;
+$stickTop: 4vw;
+$trans: 0.4s;
+$desktop: 840px;
+$mobile: 839px;
+
+@mixin desktop {
+	@media (min-width: #{$desktop}){
+		@content;
+	}
+}
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-size: 1.03em;
+	font-size: fontSize(paragraph);
 	font-family: 'EB Garamond', serif;
 }
 
@@ -53,21 +75,22 @@ body {
 		top: -10%;
 		mask-image: radial-gradient(ellipse 70% 77% at 40% 14%, white 99.7%, transparent );
 	}
-
+	
 	.headline {
 		grid-column: 2 / 3;
 		grid-row: 2 / 3;
 		justify-self: left;
 		align-self: flex-start;
 		color: color(bgLight);
-
+		
 		h1 {
-			font-size: 2.7em;
+			font-size: fontSize(headline);
 		}
-	
+		
 		h2 {
-			font-size: 1.8em;
+			font-size: fontSize(title);
 			span {
+				font-size: fontSize(title);
 				color: color(textDark);
 			}
 		}
@@ -76,99 +99,133 @@ body {
 
 .stickable {
 	position: absolute;
-	top: $margin;
-	transition: $stickyTransition;
-	transition-delay: $stickyTransition;
+	top: $stickTop;
 }
 
 .logo {
-	width: 15%;
+	width: 14%;
 	mix-blend-mode: overlay;
 	left: $margin;
+	transition: width $trans $trans/4, top $trans 0s;
 }
 
 .navbar {
-	right: $margin;
+	right: 3vw;
+	width: $navbarWidth;
 
-	a {
-		float: left;
-		display: block;
-		//color: color(linkDark);
-		text-align: center;
-		font-size: 1.1em;
-		margin: 0.8em;
-		text-decoration: none;
+	transition: top $trans ease-in 0s;
 
+	div {
+		display: inline-flex;
+		width: 20%;
+		float: right;
+		justify-content: left;
 		
-		span {
-			position: static;
-			transition: $stickyTransition;
-			opacity: 100%;
-		}
 		
-		svg{
-			position: fixed;
-			transition: $stickyTransition*2;
-			opacity: 0%;
-			height: 40px;		
-		}
-		@for $i from 1 through 5 {
-			#icon#{$i} {
-				right: $margin*($i*1.15);
+		a{
+			position: relative;
+			font-size: fontSize(paragraph);
+			color: color(linkDark);
+			text-decoration: none;
+			display: inline-flex;
+			align-content: center;
+			transition: color $trans/2 0s;
+
+			svg {
+				position: absolute;
+				display: inline-flex;
+				float: right;
+				align-self: center;
+				right: 0px;
+				opacity: 0%;
+				height: 10px;
+				width: 100%;
+				transition: opacity $trans $trans*1.3+$trans/3, height $trans $trans*1.3;
+			}
+
+			span {
+				transition: opacity $trans $trans*1.3, font-size $trans $trans*1.3;
 			}
 		}
-	}
 
-	a:hover {
-		color: color(linkLight);
+		a:hover {
+			color: color(linkLight);
+			
+		}
 		
+		.current-link {
+			color: color(linkActive);
+		}
 	}
 
-	.current-link {
-		color: color(linkActive);
+	@for $i from 5 to 1 {
+		#nav#{$i} {
+			transition: width $trans*($i/10) ease-out $trans*($i/10);
+		}
 	}
 }
 
 .sticky {
-	position: fixed;
-	top: $margin;
-	z-index: 1;	
+	position:fixed;
+	top:10px;
+	z-index: 1;
 }
 
 .logo.sticky {
-	width: 11%;
-	left: $margin;
+	width: 10%;
+	transition: width $trans 0s, top 0s  0s;
 }
+
 .navbar.sticky {
-	right: $margin;
-	a svg {
-		position: static;
-		opacity: 100%;
+	div {
+	
+		a{
+			svg {
+				position: static;
+				opacity: 100%;
+				transition: opacity $trans $trans/3, height $trans 0s;
+				height: calc(max(2.2vw, 18px));
+			}
+
+			span {
+					position: absolute;
+					width: 100%;
+					top:20%;
+					font-size: fontSize(navbar);
+					white-space: nowrap;
+					opacity: 0%;
+					transition: opacity $trans 0s, font-size $trans 0s;
+				}
+		}
 	}
-	a span {
-		position: fixed;
-		opacity: 0%;
+
+	@for $i from 5 to 1 {
+		#nav#{$i} {
+			width: 13%;
+			transition: width $trans/($i*2) ease-out $trans*1.1+$trans/$i;
+		}
 	}
 }
 
 section {
 	display: grid;
-	grid-template-columns: $margin minmax(auto, 50%-$margin) minmax(auto, 50%-$margin) $margin;
-	//grid-template-rows:  auto auto;
+	grid-template-columns: $margin auto $margin;
 	margin-bottom: $margin;
-
+	@include desktop {
+		grid-template-columns: $margin minmax(auto, 50%-$margin) minmax(auto, 50%-$margin) $margin;
+	}
 	h3 {
-		font-size: 2.3em;
+		font-size: fontSize(title);
 		align-self: flex-end;
 		justify-self: center;
 	}
 	p {
 		padding-top: 5%;
-		font-size: 1.5em;
+		font-size:fontSize(paragraph);
 		text-align: justify;
 	}
 	img {		
-		width: 80%;		
+		width: 90%;		
 	}
 }
 
@@ -176,31 +233,47 @@ section {
 	h3 {
 		grid-column: 2 / 3;
 		grid-row: 1 / 2;
+		@include desktop {
+			grid-column: 2 / 3;
+		}
+
 	}
 	p {
 		grid-column: 2 / 3;
-		grid-row: 2 / 3;
+		grid-row: 3 / 4;
+		@include desktop {
+			grid-row: 2 / 3;
+		}
 	}
 	img {
-		grid-column: 3 / -1;
-		grid-row: 1 / 3;
-		justify-self: right;
+		grid-column: 1 / -1;
+		grid-row: 2 / 3;
+		width: 100%;
+		justify-self: center;
+		@include desktop {
+			grid-column: 3 / -1;
+			grid-row: 1 / 3;
+			justify-self: right;
+			align-self: center;
+			width: 90%;
+		}
 		//mask: url(../image/bullMask.svg) 100% 20% / 70% no-repeat;		
 	}
 }
 
 .bulls {
 	h3 {
-		grid-column: 3 / 4;
+		grid-column: 2 / 3;
 		grid-row: 1 / 2;
 	}
 	p {
-		grid-column: 3 / 4;
-		grid-row: 2 / 3;
+		grid-column: 2 / 3;
+		grid-row: 3 / 4;
+		justify-self: center;
 	}
 	img {
 		grid-column: 1 / 3;
-		grid-row: 1 / 3;
+		grid-row: 2 / 3;
 		justify-self: left;
 		align-self: flex-end;
 		
@@ -215,11 +288,12 @@ section {
 	}
 	p {
 		grid-column: 2 / 3;
-		grid-row: 2 / 3;
+		grid-row: 3 / 4;
+		justify-self: center;
 	}
 	img {
-		grid-column: 3 / -1;
-		grid-row: 1 / 3;
+		grid-column: 2 / -1;
+		grid-row: 2 / 3;
 		justify-self: right;
 		align-self: flex-end;
 		
@@ -229,11 +303,12 @@ section {
 
 .contact {
 	//grid-template-rows: minmax($margin,20%) auto minmax(40%, 100vh) $margin;
-	grid-template-rows: 1.5fr 1fr 2fr 5fr $margin;
+	//grid-template-rows: 1.5fr 1fr 2fr 5fr $margin;
+	grid-template-rows: 1fr 1fr 1fr 2fr 3fr $margin;
 	color: color(bgLight);
 	
 	h3 {
-		grid-column: 2 / 4;
+		grid-column: 2 / 3;
 		grid-row: 1 / 2;
 		align-self: center;
 	}
@@ -261,8 +336,8 @@ section {
 	}
 
 	form {
-		grid-column: 3 / 4;
-		grid-row: 2 / 4;
+		grid-column: 2 / 3;
+		grid-row: 4 / 5;
 		justify-self: right;
 		align-self: flex-start;
 		padding: 50px;
@@ -325,30 +400,12 @@ section {
 	}
 
 	.map {
-		grid-column: 2 / 4;
-		grid-row: 4 / 5;
+		grid-column: 2 / 3;
+		grid-row: 5 / 6;
 		justify-self: stretch;
 		align-self: stretch;
 		opacity: 97%;
 		z-index: 1;
-	}
-}
-
-.popupText {
-	color: color(bgLight);
-	font-size: 1em;
-
-	#title {
-		font-size: 1.4em;
-		font-weight: bold;
-	}
-	
-	#subTitle {
-		font-size: 1.2em;
-		font-weight: 600;
-		span {
-			color: color(textDark);
-		}
 	}
 }
 

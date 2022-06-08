@@ -32,13 +32,15 @@ function updateURL() {
 
 function setCurrentLink() {
   const links = document.getElementsByClassName('link')
+  const subpage = document.URL.split('#', 2)[1]
 
-  for (let i = 0; i < links.length; i++) {
-    if (links[i].getAttribute('href') === '#' + document.URL.split('#', 2)[1]) 
-      links[i].classList.add('current-link')
-    else
-      links[i].classList.remove('current-link')
-  }
+  if(subpage != undefined)
+    for (let i = 0; i < links.length; i++) {
+      if (links[i].getAttribute('href') === '#' + subpage) 
+        links[i].classList.add('current-link')
+      else
+        links[i].classList.remove('current-link')
+    }
 }
 
 /*
